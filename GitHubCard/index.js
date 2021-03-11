@@ -47,7 +47,24 @@ const cards = document.querySelector('.cards');
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['jstewart0788', 'danjirosama', 'NWKendall', 'ahmedseragcodes', 'briabytes'];
+
+followersArray.forEach(entry => {
+  axios
+  .get(`https://api.github.com/users/${entry}`)
+  .then(res => {
+    // console.log("RESPONSE \n \n", res);
+    // console.log("res.data \n \n", res.data);
+    const userCard = cardMaker(res.data);
+    cards.append(userCard);
+  })
+  .catch(err => {
+    debugger;
+  })
+  .finally(() => {
+    console.log('Done!');
+  });
+});
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -77,8 +94,7 @@ function cardMaker(object){
   const userRealName = document.createElement('h3');
   const userName = document.createElement('p');
   const userLocation = document.createElement('p');
-  const userProfileSection = document.createElement('p');
-  const userProfile = document.createElement('a');
+  const userProfile = document.createElement('p');
   const userFollowers = document.createElement('p');
   const userFollowing = document.createElement('p');
   const userBio = document.createElement('p');
@@ -88,11 +104,10 @@ function cardMaker(object){
   cardInfo.appendChild(userRealName);
   cardInfo.appendChild(userName);
   cardInfo.appendChild(userLocation);
-  cardInfo.appendChild(userProfileSection);
+  cardInfo.appendChild(userProfile);
   cardInfo.appendChild(userFollowers);
   cardInfo.appendChild(userFollowing);
   cardInfo.appendChild(userBio);
-  userProfileSection.appendChild(userProfile);
 
   card.classList.add('card');
   cardInfo.classList.add('card-info');
@@ -102,9 +117,8 @@ function cardMaker(object){
   cardImage.src = object.avatar_url;
   userRealName.textContent = object.name;
   userName.textContent = object.login;
-  userLocation.textContent = object.location;
-  userProfileSection.textContent = "Profile: ";
-  userProfile.href = object.html_url;
+  userLocation.textContent = `Location: ${object.location}`;
+  userProfile.innerHTML = `Profile: <a href=${object.html_url}>${object.html_url}<a/>`;
   userFollowers.textContent = `Followers: ${object.followers}`;
   userFollowing.textContent = `Following: ${object.following}`;
   userBio.textContent = `Bio: ${object.bio}`;
