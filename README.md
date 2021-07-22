@@ -27,10 +27,12 @@ In this project we are going to be accessing the GitHub API and building a socia
 * [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
 * [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
 * [ ] Push commits: git push origin `<firstName-lastName>`.
+   X
 
 **Follow these steps for completing your project.**
 
 * [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
+   X
 
 ### Project Setup
 
@@ -50,10 +52,12 @@ In this project we are going to be accessing the GitHub API and building a socia
 * [ ] Navigate to the root of the project with your command line.
 * [ ] Run `npm install axios` to download the dependency (it will be added to the `package.json` file).
 * [ ] At the top of the `GitHubCard/index.js` file, type `import axios from 'axios';`
+   X
 
 ### Part 1: Requesting Data from the GitHub API
 
 * [ ] Follow the instructions found in the `GitHubCard/index.js` file to request data from the GitHub API.
+   X
 
 ### Part 2: Create the component function
 
